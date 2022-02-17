@@ -1,6 +1,12 @@
 <script>
   import {Button, Field, Input} from "svelte-chota";
   import {mdiFilter} from '@mdi/js'
+  import SearchFilter from "./SearchFilter.svelte";
+
+  let filter = false
+  let toggleFilter = () => {
+    filter = !filter
+  }
 </script>
 
 <div class="search-component">
@@ -9,10 +15,16 @@
     <p>Baza podataka automehaničara u bližoj i daljoj okoloci. <br>
       Ukoliko ne postoji vaš traženi automehaničar, molim da ga dodate u bazu podataka.</p>
   </div>
-  <Field gapless>
-    <Input placeholder="Traži"/>
-    <Button icon={mdiFilter} primary/>
-  </Field>
+  <div class="search-input">
+    <Field gapless>
+      <Input placeholder="Grad"/>
+      <Button icon={mdiFilter} primary on:click={toggleFilter}/>
+    </Field>
+    {#if (filter)}
+      <SearchFilter/>
+    {/if}
+    <Button submit style="width:300px">Traži</Button>
+  </div>
 </div>
 
 <style>
