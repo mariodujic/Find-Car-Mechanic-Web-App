@@ -1,7 +1,6 @@
 <script>
+  import 'chota';
 	import Search from "./search/Search.svelte";
-
-	export let name;
 </script>
 
 <main>
@@ -10,10 +9,8 @@
 
 <style>
   main {
-    text-align: center;
-    padding: 1em;
-    max-width: 240px;
-    margin: 0 auto;
+    height: 100%;
+    font-size: 120%;
   }
 
   h1 {
@@ -21,6 +18,10 @@
     text-transform: uppercase;
     font-size: 4em;
     font-weight: 100;
+  }
+
+  p {
+    font-weight: bolder;
   }
 
   @media (min-width: 640px) {
