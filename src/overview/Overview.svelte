@@ -1,15 +1,16 @@
 <script>
+  import {Input} from "svelte-chota";
+  import store from "../redux/store";
 
+  let searchKeyword = $store.keyword
 </script>
 
 <div class="overview-component">
   <div class="overview-list">
-    <div>
-    </div>
+    <Input bind:value={searchKeyword} placeholder="{$store.filter}"/>
   </div>
   <div class="overview-map">
     <div>
-
     </div>
   </div>
 </div>
@@ -31,9 +32,12 @@
     justify-content: start;
     align-items: start;
     height: 100%;
+    padding: 8px;
   }
 
   .overview-map {
+    flex: 4;
     height: 100%;
+    background: white;
   }
 </style>
