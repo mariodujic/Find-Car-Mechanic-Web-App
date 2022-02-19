@@ -51,7 +51,6 @@
     gap: 50px;
     align-items: center;
     height: 100%;
-    background: #e3eae1;
   }
 
   .search-intro {

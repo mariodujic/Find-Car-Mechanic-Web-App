@@ -19,6 +19,7 @@
 <style>
   main {
     height: 100%;
+    background: #e3eae1;
     font-size: 120%;
   }
 
