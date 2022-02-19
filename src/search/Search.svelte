@@ -27,7 +27,7 @@
   </div>
   <div class="search-input">
     <Field gapless>
-      <Input bind:value={searchKeyword} placeholder="{$store.filter}"/>
+      <Input bind:value={searchKeyword} placeholder="{$store.search.filter}"/>
       <Button icon={mdiFilter} primary on:click={toggleFilter}/>
     </Field>
     {#if (filter)}
@@ -44,6 +44,10 @@
 </div>
 
 <style>
+  h1 {
+    outline: none;
+  }
+
   .search-component {
     display: flex;
     flex-direction: column;

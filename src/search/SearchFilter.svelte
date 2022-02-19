@@ -13,7 +13,7 @@
   {#each searchBy as search}
     <Radio
             value="{search}"
-            bind:group={$store.filter}
+            bind:group={$store.search.filter}
             on:click={()=>updateSearchType(search)}
     >{search}</Radio>
   {/each}

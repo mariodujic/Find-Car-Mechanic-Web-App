@@ -7,10 +7,10 @@
 
 <main>
   <Router>
-    <Route path="/">
+    <Route path="">
       <Search/>
     </Route>
-    <Route path="/overview">
+    <Route path="overview">
       <Overview/>
     </Route>
   </Router>

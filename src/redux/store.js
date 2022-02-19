@@ -1,6 +1,7 @@
 import "../patchProcess"
-import {createStore} from "redux";
+import {combineReducers, createStore} from "redux";
 import {searchReducer} from "../search/search-reducer";
+import {overviewReducer} from "../overview/overview-reducer";
 
 function storeEnhancer(createStoreApi) {
   return function (reducer, initialState) {
@@ -16,4 +17,8 @@ function storeEnhancer(createStoreApi) {
   }
 }
 
-export default createStore(searchReducer, storeEnhancer);
+const rootReducer = combineReducers({
+  search: searchReducer,
+  overview: overviewReducer
+})
+export default createStore(rootReducer, storeEnhancer);
