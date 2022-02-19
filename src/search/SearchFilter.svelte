@@ -1,16 +1,21 @@
 <script>
   import {Radio} from "svelte-chota";
-  import store, {searchBy} from './filter-store'
+  import store from "../redux/store";
+  import {SearchActions} from "./search-action";
+  import {searchBy} from "./search-reducer";
 
   let updateSearchType = (type) => {
-    store.dispatch({type: type})
+    store.dispatch({type: SearchActions.ChangeFilter, payload: type})
   }
-  let selectedSearch = $store
 
 </script>
 <div class="search-filter">
   {#each searchBy as search}
-    <Radio value="{search}" bind:group={selectedSearch} on:click={()=>updateSearchType(search)}>{search}</Radio>
+    <Radio
+            value="{search}"
+            bind:group={$store.filter}
+            on:click={()=>updateSearchType(search)}
+    >{search}</Radio>
   {/each}
 </div>
 

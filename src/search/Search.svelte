@@ -2,12 +2,17 @@
   import {Button, Field, Input} from "svelte-chota";
   import {mdiFilter} from '@mdi/js'
   import SearchFilter from "./SearchFilter.svelte";
-  import store from './filter-store';
+  import store from "../redux/store";
+  import {SearchActions} from "./search-action";
 
   let filter = false
   let toggleFilter = () => {
     filter = !filter
   }
+  let search = (keyword) => {
+    store.dispatch({type: SearchActions.Search, payload: keyword})
+  }
+  let searchKeyword = ""
 </script>
 
 <div class="search-component">
@@ -18,13 +23,13 @@
   </div>
   <div class="search-input">
     <Field gapless>
-      <Input placeholder="{$store}"/>
+      <Input bind:value={searchKeyword} placeholder="{$store.filter}"/>
       <Button icon={mdiFilter} primary on:click={toggleFilter}/>
     </Field>
     {#if (filter)}
       <SearchFilter/>
     {/if}
-    <Button submit style="width:300px">Traži</Button>
+    <Button submit style="width:300px" on:click={()=>search(searchKeyword)}>Traži</Button>
   </div>
 </div>
 

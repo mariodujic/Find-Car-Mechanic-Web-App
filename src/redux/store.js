@@ -1,21 +1,12 @@
-import '../patchProcess';
+import "../patchProcess"
 import {createStore} from "redux";
-
-export let searchBy = ["Gradu", "Adresi", "Nazivu"]
-
-function reducer(state = searchBy[0], action) {
-  if (searchBy.includes(action.type)) {
-    state = action.type
-  }
-  return state
-}
+import {searchReducer} from "../search/search-reducer";
 
 function storeEnhancer(createStoreApi) {
   return function (reducer, initialState) {
     const reduxStore = createStoreApi(reducer, initialState);
     return {
-      ...reduxStore,
-      subscribe(fn) {
+      ...reduxStore, subscribe(fn) {
         fn(reduxStore.getState());
         return reduxStore.subscribe(() => {
           fn(reduxStore.getState());
@@ -25,4 +16,4 @@ function storeEnhancer(createStoreApi) {
   }
 }
 
-export default createStore(reducer, storeEnhancer);
+export default createStore(searchReducer, storeEnhancer);
