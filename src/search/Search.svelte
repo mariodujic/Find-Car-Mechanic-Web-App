@@ -4,13 +4,17 @@
   import SearchFilter from "./SearchFilter.svelte";
   import store from "../redux/store";
   import {SearchActions} from "./search-action";
+  import {useNavigate} from "svelte-navigator";
+  import {Route} from "../navigation/routes";
 
   let filter = false
   let toggleFilter = () => {
     filter = !filter
   }
+  let navigate = useNavigate()
   let search = (keyword) => {
     store.dispatch({type: SearchActions.Search, payload: keyword})
+    navigate(Route.OVERVIEW)
   }
   let searchKeyword = ""
 </script>
@@ -29,7 +33,13 @@
     {#if (filter)}
       <SearchFilter/>
     {/if}
-    <Button submit style="width:300px" on:click={()=>search(searchKeyword)}>Traži</Button>
+    <Button
+            submit
+            style="width:300px"
+            on:click={()=>search(searchKeyword)}
+            to="overview"
+    >Traži
+    </Button>
   </div>
 </div>
 
