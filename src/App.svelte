@@ -1,6 +1,6 @@
 <script>
   import 'chota';
-	import Search from "./search/Search.svelte";
+  import Search from "./search/Search.svelte";
 </script>
 
 <main>

@@ -1,13 +1,16 @@
 <script>
   import {Radio} from "svelte-chota";
+  import store, {searchBy} from './filter-store'
 
-  let searchBy = ["Gradu", "Adresi", "Nazivu"]
-  let selectedSearch = searchBy[0]
+  let updateSearchType = (type) => {
+    store.dispatch({type: type})
+  }
+  let selectedSearch = $store
+
 </script>
-
 <div class="search-filter">
   {#each searchBy as search}
-    <Radio value="{search}" bind:group={selectedSearch}>{search}</Radio>
+    <Radio value="{search}" bind:group={selectedSearch} on:click={()=>updateSearchType(search)}>{search}</Radio>
   {/each}
 </div>
 

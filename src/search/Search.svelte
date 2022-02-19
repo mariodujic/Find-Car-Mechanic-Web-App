@@ -2,6 +2,7 @@
   import {Button, Field, Input} from "svelte-chota";
   import {mdiFilter} from '@mdi/js'
   import SearchFilter from "./SearchFilter.svelte";
+  import store from './filter-store';
 
   let filter = false
   let toggleFilter = () => {
@@ -17,7 +18,7 @@
   </div>
   <div class="search-input">
     <Field gapless>
-      <Input placeholder="Grad"/>
+      <Input placeholder="{$store}"/>
       <Button icon={mdiFilter} primary on:click={toggleFilter}/>
     </Field>
     {#if (filter)}
