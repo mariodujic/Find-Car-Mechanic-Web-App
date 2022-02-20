@@ -10,6 +10,7 @@
 <div class="overview-component">
   <div class="overview-list">
     <Input bind:value={searchKeyword} placeholder="{$store.search.filter}"/>
+    <hr>
     {#each $store.overview.result as result}
       <div class="overview-list-item">
         <p>{result.name}</p>
